@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import com.br.agenda.model.Aluno;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class ListaFragment extends Fragment {
 
@@ -22,10 +23,6 @@ public class ListaFragment extends Fragment {
 	private ListView lvAlunos;
 	private ImageButton ibAdd;
 
-	public ListaFragment() {
-	}
-
-	@SuppressWarnings("unchecked")
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.fragment_lista, container, false);
@@ -34,7 +31,7 @@ public class ListaFragment extends Fragment {
 		ibAdd = (ImageButton) rootView.findViewById(R.id.ibAdd);
 
 		Bundle bundle = getArguments();
-		alunos = (ArrayList<Aluno>) bundle.get("alunos");
+		alunos = bundle.getParcelableArrayList("alunos");
 
 		// Preenchendo a List View com os nomes dos alunos em alunos
 		ArrayList<String> nomesAlunos = new ArrayList<String>();
@@ -50,8 +47,20 @@ public class ListaFragment extends Fragment {
 
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(getActivity(), "olá", Toast.LENGTH_SHORT).show();
+				Bundle bundle = new Bundle();
+				bundle.putParcelableArrayList("alunos", alunos);
+				CadastroFragment cadastroFragment = new CadastroFragment();
+				cadastroFragment.setArguments(bundle);
 
+				FragmentManager manager = getFragmentManager();
+				FragmentTransaction beginTransaction = manager.beginTransaction();
+				try {
+					beginTransaction.replace(R.id.container, cadastroFragment);
+					beginTransaction.addToBackStack(null);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				beginTransaction.commit();
 			}
 		});
 

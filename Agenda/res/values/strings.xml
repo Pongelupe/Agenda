@@ -1,10 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
-
     <string name="app_name">Agenda</string>
     <string name="alunos_cadastrados">Estes são os alunos cadastrados:</string>
+    <string name="cadastro">Formulário de cadastrado:</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="hello_world">Hello world!</string>
-
+    <string name="nome">Nome:</string>
+    <string name="nome_ex">Pericles</string>
+    <string name="cpf">CPF:</string>
+    <string name="cpf_ex">123.456.789-00</string>
+    <string name="nascimento">Nascimento:</string>
+    <string name="nascimento_ex">02-06-1998</string>
+    <string name="add">Adicionar</string>
 </resources>
