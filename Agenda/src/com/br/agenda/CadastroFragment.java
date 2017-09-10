@@ -50,7 +50,14 @@ public class CadastroFragment extends Fragment {
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
 				if (s.length() == 11) {
-					// TODO
+					String cleanString = s.toString().trim();
+					String initChars = cleanString.substring(0, 3);
+					String middleChars = cleanString.substring(3, 6);
+					String middleFinalChars = cleanString.substring(6, 9);
+					String finalChars = cleanString.substring(cleanString.length() - 2);
+
+					cleanString = String.format("%s.%s.%s-%s", initChars, middleChars, middleFinalChars, finalChars);
+					etCpf.setText(cleanString);
 				}
 			}
 
@@ -67,7 +74,16 @@ public class CadastroFragment extends Fragment {
 
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				// TODO
+				if (s.length() == 8) {
+					String cleanString = s.toString().trim();
+					String daysChars = cleanString.substring(0, 2);
+					String monthsChars = cleanString.substring(3, 5);
+					String yearsChars = cleanString.substring(cleanString.length() - 4);
+
+					cleanString = String.format("%s-%s-%s", daysChars, monthsChars, yearsChars);
+					etNascimento.setText(cleanString);
+
+				}
 			}
 
 			@Override
