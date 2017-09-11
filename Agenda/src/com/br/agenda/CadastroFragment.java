@@ -60,6 +60,8 @@ public class CadastroFragment extends Fragment {
 
 					cleanString = String.format("%s.%s.%s-%s", initChars, middleChars, middleFinalChars, finalChars);
 					etCpf.setText(cleanString);
+				} else if (s.length() > 14) {
+					etCpf.setText("");
 				}
 			}
 
@@ -85,6 +87,9 @@ public class CadastroFragment extends Fragment {
 					cleanString = String.format("%s-%s-%s", daysChars, monthsChars, yearsChars);
 					etNascimento.setText(cleanString);
 
+				}
+				if (s.length() > 11) {
+					etNascimento.setText("");
 				}
 			}
 
@@ -159,10 +164,15 @@ public class CadastroFragment extends Fragment {
 		String cpf = etCpf.getText().toString();
 		String nascimento = etNascimento.getText().toString();
 
-		//TODO id aluno
-		Aluno aluno = new Aluno(1, nome, cpf, nascimento);
+		int id = hash(alunos.size(), nome.substring(0, 6));
+		Aluno aluno = new Aluno(id, nome, cpf, nascimento);
 		aluno.salvar();
 		alunos.add(aluno);
 	}
 
+	private int hash(int hash, String nome) {
+		for (int i = 0; i < nome.length(); i++)
+			hash += hash * 11 + nome.charAt(i);
+		return hash;
+	}
 }
