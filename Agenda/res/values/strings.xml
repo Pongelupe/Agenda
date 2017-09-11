@@ -13,4 +13,6 @@
     <string name="nascimento">Nascimento:</string>
     <string name="nascimento_ex">02-06-1998</string>
     <string name="add">Adicionar</string>
+    <string name="update">Atualizar dados</string>
+    <string name="delete">Apagar registro</string>
 </resources>

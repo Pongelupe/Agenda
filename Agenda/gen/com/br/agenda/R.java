@@ -29,20 +29,31 @@ public final class R {
         public static final int ic_person_add_black_24dp=0x7f020004;
     }
     public static final class id {
-        public static final int action_exit=0x7f080007;
-        public static final int action_settings=0x7f080008;
-        public static final int btAdd=0x7f080004;
+        public static final int action_exit=0x7f080011;
+        public static final int action_settings=0x7f080012;
+        public static final int btAdd=0x7f08000d;
+        public static final int btDelete=0x7f080009;
+        public static final int btUpdate=0x7f080008;
         public static final int container=0x7f080000;
-        public static final int etCpf=0x7f080002;
-        public static final int etNascimento=0x7f080003;
-        public static final int etNome=0x7f080001;
-        public static final int ibAdd=0x7f080006;
-        public static final int lvAlunos=0x7f080005;
+        public static final int etCpf=0x7f08000b;
+        public static final int etCpfPop=0x7f080005;
+        public static final int etNascimento=0x7f08000c;
+        public static final int etNascimentoPop=0x7f080007;
+        public static final int etNome=0x7f08000a;
+        public static final int etNomePop=0x7f080003;
+        public static final int ibAdd=0x7f080010;
+        public static final int lvAlunos=0x7f08000f;
+        public static final int tvCpfPop=0x7f080004;
+        public static final int tvListaCadastro=0x7f08000e;
+        public static final int tvNascimentoPop=0x7f080006;
+        public static final int tvNomeAluno=0x7f080001;
+        public static final int tvNomePop=0x7f080002;
     }
     public static final class layout {
         public static final int activity_agenda=0x7f030000;
-        public static final int fragment_formulario=0x7f030001;
-        public static final int fragment_lista=0x7f030002;
+        public static final int dialog_aluno=0x7f030001;
+        public static final int fragment_formulario=0x7f030002;
+        public static final int fragment_lista=0x7f030003;
     }
     public static final class menu {
         public static final int agenda=0x7f070000;
@@ -56,12 +67,14 @@ public final class R {
         public static final int cadastro=0x7f040002;
         public static final int cpf=0x7f040008;
         public static final int cpf_ex=0x7f040009;
+        public static final int delete=0x7f04000e;
         public static final int hello_world=0x7f040005;
         public static final int nascimento=0x7f04000a;
         public static final int nascimento_ex=0x7f04000b;
         public static final int nome=0x7f040006;
         public static final int nome_ex=0x7f040007;
         public static final int title_activity_main=0x7f040004;
+        public static final int update=0x7f04000d;
     }
     public static final class style {
         /** 

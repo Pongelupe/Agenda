@@ -6,6 +6,8 @@ import com.br.agenda.model.Aluno;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.Editable;
@@ -77,7 +79,7 @@ public class CadastroFragment extends Fragment {
 				if (s.length() == 8) {
 					String cleanString = s.toString().trim();
 					String daysChars = cleanString.substring(0, 2);
-					String monthsChars = cleanString.substring(3, 5);
+					String monthsChars = cleanString.substring(2, 4);
 					String yearsChars = cleanString.substring(cleanString.length() - 4);
 
 					cleanString = String.format("%s-%s-%s", daysChars, monthsChars, yearsChars);
@@ -100,9 +102,33 @@ public class CadastroFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				try {
-					if (validaCampos())
+					if (validaCampos()) {
 						salvarAluno();
-					else {
+						final AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+						alertDialog.setTitle("Atenção");
+						alertDialog.setMessage("Aluno salvo com sucesso!");
+						alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int which) {
+								alertDialog.dismiss();
+
+								Bundle bundle = new Bundle();
+								bundle.putParcelableArrayList("alunos", alunos);
+								ListaFragment listaFragment = new ListaFragment();
+								listaFragment.setArguments(bundle);
+
+								FragmentManager manager = getFragmentManager();
+								FragmentTransaction beginTransaction = manager.beginTransaction();
+								try {
+									beginTransaction.replace(R.id.container, listaFragment);
+									beginTransaction.addToBackStack(null);
+								} catch (Exception e) {
+									e.printStackTrace();
+								}
+								beginTransaction.commit();
+							}
+						});
+						alertDialog.show();
+					} else {
 						final AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
 						alertDialog.setTitle("Atenção");
 						alertDialog.setMessage("Preencha os campos para prossegir");
@@ -125,7 +151,7 @@ public class CadastroFragment extends Fragment {
 		String cpf = etCpf.getText().toString();
 		String nascimento = etNascimento.getText().toString();
 
-		return !(nome.isEmpty() && cpf.isEmpty() && nascimento.isEmpty());
+		return !(nome.isEmpty() || cpf.length() < 11 || nascimento.length() < 8);
 	}
 
 	private void salvarAluno() throws Exception {
@@ -133,6 +159,7 @@ public class CadastroFragment extends Fragment {
 		String cpf = etCpf.getText().toString();
 		String nascimento = etNascimento.getText().toString();
 
+		//TODO id aluno
 		Aluno aluno = new Aluno(1, nome, cpf, nascimento);
 		aluno.salvar();
 		alunos.add(aluno);

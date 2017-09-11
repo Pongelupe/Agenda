@@ -30,10 +30,8 @@ public class AgendaActivity extends Activity {
 		alunos = new ArrayList<Aluno>();
 		try {
 			banco = new Banco(new Aluno());
-			alunos.add(new Aluno());
 			alunos = (ArrayList<Aluno>) banco.open();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
