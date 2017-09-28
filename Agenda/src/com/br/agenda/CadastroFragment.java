@@ -164,7 +164,7 @@ public class CadastroFragment extends Fragment {
 		String cpf = etCpf.getText().toString();
 		String nascimento = etNascimento.getText().toString();
 
-		int id = hash(alunos.size(), nome.substring(0, 6));
+		int id = hash(alunos.size(), nome.substring(0, nome.length()));
 		Aluno aluno = new Aluno(id, nome, cpf, nascimento);
 		aluno.salvar();
 		alunos.add(aluno);

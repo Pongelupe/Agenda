@@ -188,7 +188,7 @@ public class ListaFragment extends Fragment {
 
 					cleanString = String.format("%s.%s.%s-%s", initChars, middleChars, middleFinalChars, finalChars);
 					etCpfPop.setText(cleanString);
-				} else if (s.length() > 11) {
+				} else if (s.length() > 14) {
 					etCpfPop.setText("");
 				}
 			}
